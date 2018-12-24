@@ -68,3 +68,13 @@ server.put('/api/projects/:id', (req,res)=>{
     )
 })
 
+server.delete('/api/projects/:id',(req,res)=>{
+    let id=req.params.id;
+    dbProject.remove(id).then(numberDeleted=>{
+        if(numberDeleted){
+        res.status(200).json({success:'successfully removed'})}else{
+            res.status(500).json({error:"user cannot be removed"})
+        }
+    })
+
+})
