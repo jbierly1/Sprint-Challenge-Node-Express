@@ -52,3 +52,19 @@ server.post('/api/projects', (req, res)=>{
         res.status(400).json({error:"please provide name and description"})
     }
 })
+
+server.put('/api/projects/:id', (req,res)=>{
+    let id=req.params.id;
+    let changes=req.body;
+    console.log(`id ${id}, changes ${changes}`);
+    dbProject.update(id,changes)
+    .then(updatedProject=>{
+        if(updatedProject){
+        res.status(200).json({updatedProject})}
+        else{res.status(404).json({error:"user with that id could not be updated"})
+        }
+    }
+
+    )
+})
+
