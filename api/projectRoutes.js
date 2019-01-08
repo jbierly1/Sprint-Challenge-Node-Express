@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 	dbProject
 		.get()
 		.then(projects => {
-			res.status(200).json(projects);
+			res.status(200).json({ projects });
 		})
 		.catch(err => {
 			res
